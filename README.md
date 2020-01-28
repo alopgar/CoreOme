@@ -11,5 +11,5 @@ This pipeline is designed to pre-process SqueezeMeta_reads output by multiple st
 ## How to use it
 
 a) Use `Rparams.R` to customise paths and other parameters for the pipeline. More info inside the file.  
-b) Use `Rphenotmods.R` to modify R classes of phenotypic variables. Useful to convert continuous variables into categorical factors.
+b) Use `Rphenotmods.R` to modify R classes of phenotypic variables. Useful to convert continuous variables into categorical factors.  
 c) Run `SQMr_exe.sh`. It is required to check input, output and bin paths inside the script.
