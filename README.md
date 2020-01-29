@@ -1,4 +1,4 @@
-# MicrobFilter
+# CoreOme
 Taxonomy and prevalence filter pipeline for microbiome datasets adapted to SqueezeMeta_Reads output
 
 This pipeline is designed to pre-process SqueezeMeta_reads output by multiple steps:
