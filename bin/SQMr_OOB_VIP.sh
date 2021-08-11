@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -t 00:20:00
+#SBATCH -t 09:00:00
 #SBATCH -J 2.3_OOB_VIP
 #SBATCH --mem=0 
 #SBATCH --partition=thinnodes,cola-corta
@@ -7,12 +7,16 @@
 #SBATCH --output=/mnt/netapp2/Home_FT2/home/otras/ini/alg/2.3_OOB.out
 #SBATCH --error=/mnt/netapp2/Home_FT2/home/otras/ini/alg/2.3_OOB.out
 
+## 2.2) END: Move RandomForest reports to subset directory.
+if [ ! -d $SUBDIR/R_out ]; then mkdir $SUBDIR/R_out; fi
+mv 2.2_RndmFrst_*.out $SUBDIR/R_out
+
 ## 2.3) GET OOB ERRORS: and join to previous OOB_table.
 subset=$(ls $SUBDIR | egrep "RanFor_thr[0-9]{2}_out\.txt")
 
 for f in $subset; do
-  awk 'BEGIN { FS = "\t"; OFS = "\t"; ORS = "\n" } 
-  function basename(file) {sub(".*/", "", file); return file} /Mean of squared residuals/ {print $2, basename(FILENAME)}' $SUBDIR/$f | sed 's/_out//'
+	awk 'BEGIN { FS = "\t"; OFS = "\t"; ORS = "\n" } 
+	function basename(file) {sub(".*/", "", file); return file} /Mean of squared residuals/ {print $2, basename(FILENAME)}' $SUBDIR/$f | sed 's/_out//'
 done > $WDIR/Filtered/OOBerr.tmp
 sed -i '1i OOB_error\tRF_file' $WDIR/Filtered/OOBerr.tmp
 
@@ -24,4 +28,4 @@ rm $WDIR/Filtered/OOB_table.tmp $WDIR/Filtered/OOBerr.tmp
 best=$(sort -k6 -n $WDIR/Filtered/OOB_table.tsv | sed -n 2p | awk -F '\t' '{print $7}')
 thr=$(sort -k6 -n $WDIR/Filtered/OOB_table.tsv | sed -n 2p | awk -F '\t' '{print $2}')
 
-Rscript $BINPATH/Filter3_VIP.R $paramfile $phenotmod $best
+Rscript $BINPATH/Filter23_VIP.R $paramfile $phenotmod $best
