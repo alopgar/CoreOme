@@ -3,7 +3,7 @@
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/CoreOme)](https://cran.r-project.org/package=CoreOme)
 
 # CoreOme
-Taxonomy and prevalence filter pipeline for microbiome datasets adapted to SqueezeMeta_Reads output
+Taxonomy and prevalence filter pipeline for microbiome datasets adapted to SqueezeMeta_Reads output.
 
 This pipeline is designed to pre-process SqueezeMeta_reads output by multiple steps:
 
