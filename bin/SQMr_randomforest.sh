@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -t 00:20:00
+#SBATCH -t 10:00:00
 #SBATCH -J 2.2_RndmFrst_%a
 #SBATCH --mem=0 
 #SBATCH --partition=thinnodes,cola-corta
@@ -16,4 +16,4 @@ SUBDIR=$WDIR/Filtered/RFSubsets
 if [ ! -d $SUBDIR ]; then mkdir $SUBDIR; fi
 
 subset=$(ls $SUBDIR | egrep "RanFor_thr[0-9]{2}\.txt" | sed "s|.txt||" | sed -n ${SLURM_ARRAY_TASK_ID}p)
-Rscript $BINPATH/Filter3_RandomForest.R $paramfile $SUBDIR/$subset.txt
+Rscript $BINPATH/Filter22_RandomForest.R $paramfile $SUBDIR/$subset.txt
