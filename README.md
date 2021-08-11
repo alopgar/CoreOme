@@ -1,3 +1,7 @@
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![Last version](https://img.shields.io/github/tag/alopgar/CoreOme.svg)](https://img.shields.io/github/tag/alopgar/CoreOme.svg)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/CoreOme)](https://cran.r-project.org/package=CoreOme)
+
 # CoreOme
 Taxonomy and prevalence filter pipeline for microbiome datasets adapted to SqueezeMeta_Reads output
 
